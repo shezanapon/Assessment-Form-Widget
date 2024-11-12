@@ -19,7 +19,7 @@ import {
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Controller } from "react-hook-form";
+import { Controller, useFieldArray } from "react-hook-form";
 import styled from "styled-components";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,31 +35,40 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const ThirdPage = ({ control }) => {
   const [show, setShow] = useState(false);
   const [rows, setRows] = useState([{ id: 1 }]);
+  const [tableData, setTableData] = useState([]);
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "thirdPage.medications",
+  });
 
   const handleAddRow = () => {
     setRows([...rows, { id: rows.length + 1 }]);
+    append({ name: "", dosage: "", purpose: "", doctor: "" });
   };
 
   const handleRemoveRow = (index) => {
-    const updatedRows = rows.filter((_, rowIndex) => rowIndex !== index);
-    setRows(updatedRows);
+    if (fields.length > 1) {
+      remove(index);
+    }
   };
-
+  const handleInputChange = (index, field, value) => {
+    const updatedData = [...tableData];
+    updatedData[index] = { ...updatedData[index], [field]: value };
+    setTableData(updatedData);
+  };
   return (
     <>
       <Box>
         <React.Fragment>
           <CssBaseline />
-          <Container
-            sx={{ height: "62vh", maxHeight: "65vh", overflowY: "auto" }}
-          >
+          <Container sx={{ height: "65vh", overflowY: "auto" }}>
             <Box pb={2}>
               <Box pb={1}>
                 <Typography sx={{ fontWeight: "bold" }}>
                   CURRENT MEDICAL PROBLEMS:
                 </Typography>
                 <Controller
-                  name="current medical problems"
+                  name="thirdPage.currentMedicalProblems"
                   control={control}
                   render={({ field }) => (
                     <TextField
@@ -83,7 +92,7 @@ const ThirdPage = ({ control }) => {
                 </Typography>
 
                 <Controller
-                  name="adaptive equipment"
+                  name="thirdPage.adaptiveEquipment"
                   control={control}
                   render={({ field }) => (
                     <TextField
@@ -117,7 +126,7 @@ const ThirdPage = ({ control }) => {
                     <TableRow sx={{ padding: 0 }} key={row.id}>
                       <TableCell sx={{ padding: 0 }}>
                         <Controller
-                          name={`medicationName-${index}`}
+                          name={`thirdPage.medications[${index}].name`}
                           control={control}
                           render={({ field }) => (
                             <TextField
@@ -126,13 +135,17 @@ const ThirdPage = ({ control }) => {
                               variant="outlined"
                               fullWidth
                               sx={{ fontSize: "0.75rem" }}
+                              // value={tableData[index]?.name || ""}
+                              // onChange={(e) =>
+                              //   handleInputChange(index, "name", e.target.value)
+                              // }
                             />
                           )}
                         />
                       </TableCell>
                       <TableCell align="left">
                         <Controller
-                          name={`medicationDosage-${index}`}
+                          name={`thirdPage.medications[${index}].dosage`}
                           control={control}
                           render={({ field }) => (
                             <TextField
@@ -141,13 +154,21 @@ const ThirdPage = ({ control }) => {
                               variant="outlined"
                               fullWidth
                               sx={{ fontSize: "0.75rem" }}
+                              // value={tableData[index]?.dosage || ""}
+                              // onChange={(e) =>
+                              //   handleInputChange(
+                              //     index,
+                              //     "dosage",
+                              //     e.target.value
+                              //   )
+                              // }
                             />
                           )}
                         />
                       </TableCell>
                       <TableCell align="left">
                         <Controller
-                          name={`purpose-${index}`}
+                          name={`thirdPage.medications[${index}].purpose`}
                           control={control}
                           render={({ field }) => (
                             <TextField
@@ -156,13 +177,21 @@ const ThirdPage = ({ control }) => {
                               variant="outlined"
                               fullWidth
                               sx={{ fontSize: "0.75rem" }}
+                              // value={tableData[index]?.purpose || ""}
+                              // onChange={(e) =>
+                              //   handleInputChange(
+                              //     index,
+                              //     "purpose",
+                              //     e.target.value
+                              //   )
+                              // }
                             />
                           )}
                         />
                       </TableCell>
                       <TableCell align="left">
                         <Controller
-                          name={`doctorName-${index}`}
+                          name={`thirdPage.medications[${index}].doctor`}
                           control={control}
                           render={({ field }) => (
                             <TextField
@@ -171,6 +200,14 @@ const ThirdPage = ({ control }) => {
                               variant="outlined"
                               fullWidth
                               sx={{ fontSize: "0.75rem" }}
+                              // value={tableData[index]?.doctor || ""}
+                              // onChange={(e) =>
+                              //   handleInputChange(
+                              //     index,
+                              //     "doctor",
+                              //     e.target.value
+                              //   )
+                              // }
                             />
                           )}
                         />
@@ -193,6 +230,7 @@ const ThirdPage = ({ control }) => {
                 </TableBody>
               </Table>
             </TableContainer>
+
             <Box mb={1}>
               <Typography
                 mt={0.5}
@@ -202,7 +240,7 @@ const ThirdPage = ({ control }) => {
                 Can consumer ambulate independently?
               </Typography>
               <Controller
-                name="ambulate independently"
+                name="thirdPage.ambulateIndependently"
                 control={control}
                 render={({ field }) => (
                   <RadioGroup
@@ -232,7 +270,7 @@ const ThirdPage = ({ control }) => {
                     If yes, explain:
                   </Typography>
                   <Controller
-                    name="Past Psychiatric History explanation"
+                    name="thirdPage.PastPsychiatricHistoryExplanation"
                     control={control}
                     render={({ field }) => (
                       <TextField
@@ -254,7 +292,7 @@ const ThirdPage = ({ control }) => {
                 Past Substance Abuse History:
               </Typography>
               <Controller
-                name="Past Substance Abuse History"
+                name="thirdPage.PastSubstanceAbuseHistory"
                 control={control}
                 render={({ field }) => (
                   <TextField

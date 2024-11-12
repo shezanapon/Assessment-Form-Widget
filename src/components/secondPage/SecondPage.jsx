@@ -22,8 +22,8 @@ const SecondPage = ({ control }) => {
       <Box>
         <React.Fragment>
           <CssBaseline />
-          <Container>
-            <Box sx={{ height: "62vh", maxHeight: "65vh", overflowY: "auto" }}>
+          <Container sx={{ height: "65vh", overflowY: "auto" }}>
+            <Box sx={{}}>
               <Box>
                 <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
                   PRECAUTIONS
@@ -37,7 +37,7 @@ const SecondPage = ({ control }) => {
                   Can consumer ambulate independently?
                 </Typography>
                 <Controller
-                  name="ambulate independently"
+                  name="secondPage.ambulateIndependently"
                   control={control}
                   render={({ field }) => (
                     <RadioGroup
@@ -68,7 +68,7 @@ const SecondPage = ({ control }) => {
                       If no, assistive device needed:
                     </Typography>
                     <Controller
-                      name="assistive device"
+                      name="secondPage.assistiveDevice"
                       control={control}
                       render={({ field }) => (
                         <RadioGroup {...field} row>
@@ -114,7 +114,7 @@ const SecondPage = ({ control }) => {
                   community mobility?
                 </Typography>
                 <Controller
-                  name="consumer need a device"
+                  name="secondPage.consumerNeed_a_device"
                   control={control}
                   render={({ field }) => (
                     <RadioGroup {...field} row>
@@ -135,7 +135,7 @@ const SecondPage = ({ control }) => {
 
               <Box>
                 <Controller
-                  name="comments on need of a device"
+                  name="secondPage.commentsOnNeedOf_a_device"
                   control={control}
                   render={({ field }) => (
                     <TextField
@@ -153,7 +153,7 @@ const SecondPage = ({ control }) => {
               <Grid pt={1} container spacing={1}>
                 <Grid item xs={12} md={6}>
                   <Controller
-                    name="Falls/Decreased Safety Awareness/Other"
+                    name="secondPage.Falls/DecreasedSafetyAwareness/Other"
                     control={control}
                     render={({ field }) => (
                       <TextField
@@ -176,7 +176,7 @@ const SecondPage = ({ control }) => {
                         label="Visual Limitations"
                       />
                     )}
-                    name="Visual Limitations"
+                    name="secondPage.VisualLimitations"
                     control={control}
                   />
                 </Grid>
@@ -191,7 +191,7 @@ const SecondPage = ({ control }) => {
                         label="Hearing Deficits"
                       />
                     )}
-                    name="Hearing Deficits"
+                    name="secondPage.hearingDeficits"
                     control={control}
                   />
                 </Grid>
@@ -206,7 +206,7 @@ const SecondPage = ({ control }) => {
                     Hearing Aid
                   </Typography>
                   <Controller
-                    name="Hearing Aid"
+                    name="secondPage.hearingAid"
                     control={control}
                     render={({ field }) => (
                       <RadioGroup
@@ -242,7 +242,7 @@ const SecondPage = ({ control }) => {
                         label="Sensory Deficits"
                       />
                     )}
-                    name="Sensory Deficits"
+                    name="secondPage.sensoryDeficits"
                     control={control}
                   />
                 </Grid>
@@ -257,7 +257,7 @@ const SecondPage = ({ control }) => {
                         label="Motor Skills Deficits"
                       />
                     )}
-                    name="Motor Skills Deficits"
+                    name="secondPage.motorSkillsDeficits"
                     control={control}
                   />
                 </Grid>
@@ -267,7 +267,7 @@ const SecondPage = ({ control }) => {
                     Does consumer have a Neuropsychological Evaluation?
                   </Typography>
                   <Controller
-                    name="Neuropsychological Evaluation"
+                    name="secondPage.neuropsychologicalEvaluation"
                     control={control}
                     render={({ field }) => (
                       <RadioGroup
@@ -297,7 +297,7 @@ const SecondPage = ({ control }) => {
                         If No, has a referral been made by Service Coordinator?
                       </Typography>
                       <Controller
-                        name="referral by Service Coordinator"
+                        name="secondPage.referralByServiceCoordinator"
                         control={control}
                         render={({ field }) => (
                           <RadioGroup {...field} row>
@@ -322,7 +322,7 @@ const SecondPage = ({ control }) => {
                     Does consumer drive?
                   </Typography>
                   <Controller
-                    name="consumer drive"
+                    name="secondPage.consumerDrive"
                     control={control}
                     render={({ field }) => (
                       <RadioGroup
@@ -353,8 +353,7 @@ const SecondPage = ({ control }) => {
                         informed:
                       </Typography>
                       <Controller
-                        name="obtained medical clearance and DMV    
-                    informed"
+                        name="secondPage.obtainedMedicalClearanceAndDMVInformed"
                         control={control}
                         render={({ field }) => (
                           <TextField

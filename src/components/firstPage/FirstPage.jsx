@@ -20,7 +20,8 @@ const FirstPage = ({ control }) => {
         {/* <CssBaseline /> */}
         <Container
           sx={{
-            height: "62vh",
+            height: "65vh",
+            maxHeight: "65vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -39,7 +40,7 @@ const FirstPage = ({ control }) => {
               </Typography>
             </Box>
 
-            <Box sx={{ maxHeight: "65vh", overflowY: "auto", pt: 1 }}>
+            <Box sx={{ pt: 1 }}>
               <Grid container spacing={1}>
                 <Grid item xs={12} md={6}>
                   <Controller
@@ -51,7 +52,7 @@ const FirstPage = ({ control }) => {
                         label="Consumer's Name"
                       />
                     )}
-                    name="Consumer's Name"
+                    name="firstPage.consumerName"
                     control={c}
                   />
                 </Grid>
@@ -66,7 +67,7 @@ const FirstPage = ({ control }) => {
                         label="Diagnosis"
                       />
                     )}
-                    name="diagnosis"
+                    name="firstPage.diagnosis"
                     control={c}
                   />
                 </Grid>
@@ -81,7 +82,7 @@ const FirstPage = ({ control }) => {
                         label="Onset "
                       />
                     )}
-                    name="onset"
+                    name="firstPage.onset"
                     control={c}
                   />
                 </Grid>
@@ -96,7 +97,7 @@ const FirstPage = ({ control }) => {
                         label="Age"
                       />
                     )}
-                    name="age"
+                    name="firstPage.age"
                     control={c}
                   />
                 </Grid>
@@ -111,7 +112,7 @@ const FirstPage = ({ control }) => {
                         label="Disability"
                       />
                     )}
-                    name="disability"
+                    name="firstPage.disability"
                     control={c}
                   />
                 </Grid>
@@ -126,7 +127,7 @@ const FirstPage = ({ control }) => {
                         label="Date of Assessment"
                       />
                     )}
-                    name="Date of Assessment"
+                    name="firstPage.dateOfAssessment"
                     control={c}
                   />
                 </Grid>
@@ -157,7 +158,7 @@ const FirstPage = ({ control }) => {
                         </div>
                       </RadioGroup>
                     )}
-                    name="assessment_type"
+                    name="firstPage.assessmentType"
                     control={c}
                   />
                 </Grid>
@@ -172,7 +173,7 @@ const FirstPage = ({ control }) => {
                         label="Initial Assessment Conducted By"
                       />
                     )}
-                    name="Initial Assessment Conducted By"
+                    name="firstPage.initialAssessmentConductedBy"
                     control={c}
                   />
                 </Grid>
@@ -187,7 +188,7 @@ const FirstPage = ({ control }) => {
                         label="Title"
                       />
                     )}
-                    name="title"
+                    name="firstPage.title"
                     control={c}
                   />
                 </Grid>
@@ -202,7 +203,7 @@ const FirstPage = ({ control }) => {
                         label="Date of Review"
                       />
                     )}
-                    name="Date of Review"
+                    name="firstPage.dateOfReview"
                     control={c}
                   />
                 </Grid>
@@ -217,7 +218,7 @@ const FirstPage = ({ control }) => {
                         label="Reviewer Name"
                       />
                     )}
-                    name="Reviewer Name"
+                    name="firstPage.reviewerName"
                     control={c}
                   />
                 </Grid>

@@ -3,13 +3,19 @@ import "./App.css";
 import AssessmentForm from "./components/AssesmentForm";
 import { useForm } from "react-hook-form";
 import { Box, Container, CssBaseline, Typography } from "@mui/material";
-import { FirstPage } from "@mui/icons-material";
-
 
 const ZOHO = window.ZOHO;
 function App() {
   const [show, setShow] = useState(false);
-  const { handleSubmit, reset, setValue, control } = useForm({});
+  const { handleSubmit, setValue, control } = useForm({
+    defaultValues: {
+      firstPage:{},
+      secondPage:{},
+      thirdPage: {
+        medications: [{ name: "", dosage: "", purpose: "", doctor: "" }],
+      },
+    },
+  });
   const handleFinalSubmit = (data) => {
     console.log(data);
   };
